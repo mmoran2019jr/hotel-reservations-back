@@ -49,7 +49,10 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         // 👉 Origen del frontend (Angular)
-        config.setAllowedOrigins(List.of("http://localhost:4200"));
+        config.setAllowedOrigins(List.of(
+        		"http://localhost:4200",
+        		"http://localhost:49958"
+        		));
 
         // 👉 Métodos permitidos
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));

@@ -13,5 +13,5 @@ logging:
     org.springframework.web: DEBUG
 
 jwt:
-  secret: "super-clave-jwt-larga-y-segura-para-docker-2025"
-  expiration-ms: 86400000   # 24 horas
+  secret: ${JWT_SECRET:super-clave-jwt-larga-y-segura-para-docker-2025}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}   # 24 horas
