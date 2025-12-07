@@ -1,0 +1,17 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/hotel_reservations_dev}
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+
+jwt:
+  secret: "super-clave-jwt-larga-y-segura-para-docker-2025"
+  expiration-ms: 86400000   # 24 horas

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: hotel-reservations-api
+
+  profiles:
+    active: dev  # Perfil por defecto
+
+server:
+  port: 8082

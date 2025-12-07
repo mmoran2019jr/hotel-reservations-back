@@ -1,0 +1,8 @@
+package com.mario.hotel.repository;
+
+import com.mario.hotel.model.Room;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface RoomRepository extends MongoRepository<Room, String> {
+    // luego agregamos queries personalizadas si hace falta
+}
