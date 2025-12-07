@@ -57,7 +57,7 @@ mvn spring-boot:run
 
 La API estará disponible en:
 
-http://localhost:8081/api
+http://localhost:8082/api
 
 🐳 Ejecutar con Docker
 Construir imagen
