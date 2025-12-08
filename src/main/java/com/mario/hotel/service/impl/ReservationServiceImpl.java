@@ -63,7 +63,7 @@ public class ReservationServiceImpl implements ReservationService {
 	            .checkInDate(request.getCheckInDate())
 	            .checkOutDate(request.getCheckOutDate())
 	            .totalPrice(totalPrice)
-	            .status(STATUS_CONFIRMED) // o PENDING si quieres otro flujo
+	            .status(STATUS_CONFIRMED)
 	            .archived(false)
 	            .build();
 
@@ -134,7 +134,7 @@ public class ReservationServiceImpl implements ReservationService {
 	            .orElseThrow(() -> new ResourceNotFoundException("Reservation not found with id: " + reservationId));
 
 	    if (STATUS_CANCELLED.equals(reservation.getStatus())) {
-	        return; // ya cancelada
+	        return;
 	    }
 
 	    reservation.setStatus(STATUS_CANCELLED);
@@ -152,7 +152,7 @@ public class ReservationServiceImpl implements ReservationService {
 	    }
 
 	    if (STATUS_CHECKED_OUT.equals(reservation.getStatus())) {
-	        return mapToDTO(reservation); // ya estaba finalizada
+	        return mapToDTO(reservation);
 	    }
 
 	    reservation.setStatus(STATUS_CHECKED_OUT);

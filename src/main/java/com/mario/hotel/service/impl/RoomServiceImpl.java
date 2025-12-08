@@ -70,7 +70,6 @@ public class RoomServiceImpl implements RoomService {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by("pricePerNight").ascending());
 
-        // En un proyecto real usarías @Query o Specifications, pero esto está bien para demo
         Page<Room> roomPage = roomRepository.findAll(pageable);
 
         List<RoomResponseDTO> filtered = roomPage.getContent().stream()
@@ -84,7 +83,7 @@ public class RoomServiceImpl implements RoomService {
         return new PageImpl<>(filtered, pageable, roomPage.getTotalElements());
     }
 
-    // Mapeos perfectos usando el builder de Lombok
+    // Mapeo de dto lombok
     private Room mapToEntity(RoomRequestDTO dto) {
         return Room.builder()
                 .name(dto.getName())

@@ -27,7 +27,7 @@ public class Reservation {
     private BigDecimal totalPrice;
     private String status;   // "PENDING", "CONFIRMED", "CANCELLED", "CHECKED_OUT"
 
-    private Boolean archived; // para marcar historial
+    private Boolean archived; 
 
 	public String getUserId() {
 		return userId;

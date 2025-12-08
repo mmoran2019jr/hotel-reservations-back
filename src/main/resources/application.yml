@@ -3,7 +3,7 @@ spring:
     name: hotel-reservations-api
 
   profiles:
-    active: dev  # Perfil por defecto
+    active: dev  # defecto perfil dev
 
 server:
   port: 8082
