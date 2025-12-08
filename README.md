@@ -93,7 +93,19 @@ ENV JWT_EXPIRATION_MS=86400000
 🌐 Exposición de puerto
 EXPOSE 8082
 
-## 🚀 Despliegue en Docker (MongoDB + API Spring Boot + Front Angular)
+## Endpoints principales
+POST http://localhost:8082/api/rooms - Crear habitacion
+
+POST http://localhost:8082/api/reservations - Realizar una reserva
+
+POST http://localhost:8082/api/auth/register - Registro de usuario
+
+PUT http://localhost:8082/api/reservations/69362044b0ac4e605b0c9449 - Actualizar una reserva
+
+(Revisar collection en postman)
+
+
+# 🚀 Despliegue en Docker (MongoDB + API Spring Boot + Front Angular)
 Este docker-compose.yml levanta tres servicios:
 
 mongo → Base de datos MongoDB
