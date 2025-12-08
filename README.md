@@ -92,3 +92,46 @@ ENV JWT_EXPIRATION_MS=86400000
 
 🌐 Exposición de puerto
 EXPOSE 8082
+
+## 🚀 Despliegue en Docker (MongoDB + API Spring Boot + Front Angular)
+Este docker-compose.yml levanta tres servicios:
+
+mongo → Base de datos MongoDB
+
+api → Backend Java Spring Boot (puerto 8082)
+
+frontend → Frontend Angular servido con Nginx (puerto 4200)
+
+## - Importante! se debe cambiar las rutas de los proyectos api y front por las rutas donde guarden los proyectos
+C:/Users/mmora/OneDrive/Documents/backend_javaspring/hotel-reservations-api -> ruta del api
+C:/Users/mmora/OneDrive/Documents/HotelApplication/hotel-reservations-front/hotel-front - ruta del front
+
+
+## 1️ Requisitos previos
+
+Asegúrate de tener instalado:
+
+Docker Desktop
+
+[Docker Compose](viene integrado en Docker Desktop)
+
+## 2️ Ubicación del archivo docker-compose.yml
+
+Guarda el archivo docker-compose.yml en alguna carpeta, por ejemplo:
+C:\Users\mmora\OneDrive\Documents\HotelApplication\deploy\docker-compose.yml
+
+Verifica que las rutas de context apunten correctamente a tus proyectos:
+
+Backend:
+C:/Users/mmora/OneDrive/Documents/backend_javaspring/hotel-reservations-api
+
+Frontend:
+C:/Users/mmora/OneDrive/Documents/HotelApplication/hotel-reservations-front/hotel-front
+
+Si cambias de lugar los proyectos, actualiza las rutas en el docker-compose.yml.
+
+## 3 Construir los empaquetados y despliegue de contenedor en docker
+docker compose build - empaquetados y despliegue
+
+docker compose up -d - levantar servicios
+
