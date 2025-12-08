@@ -10,15 +10,15 @@ import java.util.List;
 @Document(collection = "Room")
 @Getter
 @Setter
-@Builder                    // ← Esto genera el .builder().name()...build()
-@NoArgsConstructor          // ← Constructor vacío (necesario para MongoDB/JPA)
-@AllArgsConstructor         // ← Constructor con todos los campos
+@Builder                    
+@NoArgsConstructor          
+@AllArgsConstructor         // Constructor
 public class Room {
 
     @Id
     private String id;
 
-    private String name;           // "Suite Ejecutiva"
+    private String name;           
     private String type;           // "SIMPLE", "DOBLE", "SUITE"
     private BigDecimal pricePerNight;
     private Integer capacity;
@@ -26,5 +26,5 @@ public class Room {
     private List<String> amenities;
     private List<String> imageUrls;
 
-    private Boolean active = true; // valor por defecto (opcional)
+    private Boolean active = true; 
 }

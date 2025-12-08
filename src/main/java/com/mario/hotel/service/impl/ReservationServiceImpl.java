@@ -38,7 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 	    long nights = calculateNights(request.getCheckInDate(), request.getCheckOutDate());
 
-	    // Buscar reservas activas de esa habitación
+	    // Busca las reservas de la habitacion por id de room
 	    var activeStatuses = List.of(STATUS_PENDING, STATUS_CONFIRMED);
 	    var existingReservations = reservationRepository.findByRoomIdAndStatusIn(room.getId(), activeStatuses);
 
@@ -160,8 +160,6 @@ public class ReservationServiceImpl implements ReservationService {
 
 	    var updated = reservationRepository.save(reservation);
 
-	    // Aquí podrías simular envío de correo, log, etc.
-	    // e.g. log.info("Sending confirmation email to user...");
 
 	    return mapToDTO(updated);
 	}
@@ -182,16 +180,23 @@ public class ReservationServiceImpl implements ReservationService {
 
     private boolean hasDateConflict(LocalDate newStart, LocalDate newEnd,
                                     LocalDate existingStart, LocalDate existingEnd) {
-        // rango [start, end)
+        // rango de fechas
         return newStart.isBefore(existingEnd) && newEnd.isAfter(existingStart);
     }
     
    //metodo de mapeo de dto
 	private ReservationResponseDTO mapToDTO(Reservation reservation) {
+		
+        var room = roomRepository
+                .findById(reservation.getRoomId())
+                .orElse(null); // Busca la habitacion por usuario
+        
+        
 	    return ReservationResponseDTO.builder()
 	            .id(reservation.getId())
 	            .userId(reservation.getUserId())
 	            .roomId(reservation.getRoomId())
+	            .roomName(room != null ? room.getName() : null)
 	            .checkInDate(reservation.getCheckInDate())
 	            .checkOutDate(reservation.getCheckOutDate())
 	            .totalPrice(reservation.getTotalPrice())

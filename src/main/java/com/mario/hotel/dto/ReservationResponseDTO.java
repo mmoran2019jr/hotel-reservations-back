@@ -13,6 +13,7 @@ public class ReservationResponseDTO {
     private String id;
     private String userId;
     private String roomId;
+    private String roomName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private BigDecimal totalPrice;

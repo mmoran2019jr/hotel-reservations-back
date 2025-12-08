@@ -16,6 +16,6 @@ public class ErrorResponse {
     private String message;
     private String path;
 
-    // Para errores de validación (opcional)
+    //Mapeo de errores
     private Map<String, String> validationErrors;
 }

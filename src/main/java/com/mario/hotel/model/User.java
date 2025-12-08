@@ -17,6 +17,6 @@ public class User {
 
     private String name;
     private String email;
-    private String passwordHash; // para JWT
-    private String role; // e.g. "USER", "ADMIN"
+    private String passwordHash; 
+    private String role; 
 }

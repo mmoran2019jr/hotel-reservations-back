@@ -19,6 +19,4 @@ public class RoomResponseDTO {
     private List<String> imageUrls;
     private Boolean active;
     
-    // ¡¡BORRÁ TODOS LOS GETTERS Y SETTERS QUE ESCRIBISTE A MANO!!
-    // Lombok los genera automáticamente con @Data
 }

@@ -16,10 +16,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor // ← Esto inyecta roomRepository automáticamente
+@RequiredArgsConstructor //inyeccion de dependencias
 public class RoomServiceImpl implements RoomService {
 
-    // ¡BORRÁ el "= null"! Lombok lo inyecta solo
+    // room repository
     private final RoomRepository roomRepository;
 
     @Override
@@ -34,7 +34,7 @@ public class RoomServiceImpl implements RoomService {
         Room existing = roomRepository.findById(roomId)
                 .orElseThrow(() -> new ResourceNotFoundException("Habitación no encontrada con id: " + roomId));
 
-        // Actualización limpia (gracias a Lombok @Setter en Room)
+        // Actualización de room
         existing.setName(request.getName());
         existing.setType(request.getType());
         existing.setPricePerNight(request.getPricePerNight());

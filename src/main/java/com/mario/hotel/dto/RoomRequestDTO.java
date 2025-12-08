@@ -7,7 +7,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Data  // ¡Esto genera TODO: getters, setters, toString, equals, hashCode!   
+@Data  // Generacion de setters y getters (Lombok)   
 public class RoomRequestDTO {
 
     @NotBlank(message = "El nombre es obligatorio")
@@ -28,5 +28,5 @@ public class RoomRequestDTO {
 
     private List<String> imageUrls;
 
-    private Boolean active = true;   // valor por defecto opcional
+    private Boolean active = true; 
 }

@@ -45,23 +45,24 @@ public class SecurityConfig {
         return http.build();
     }
     
+    //configuracion de cors
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // 👉 Origen del frontend (Angular)
+        // rutas permitidas
         config.setAllowedOrigins(List.of(
         		"http://localhost:4200",
         		"http://localhost:49958"
         		));
 
-        // 👉 Métodos permitidos
+        // metodos permitidos
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
-        // 👉 Headers permitidos
+        //Headers permitidos
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
 
-        // Si necesitas enviar cookies o credenciales
+        // Manejo de credenciales (cookies)
         config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
