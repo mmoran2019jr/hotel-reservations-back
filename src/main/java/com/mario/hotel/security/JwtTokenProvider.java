@@ -14,6 +14,7 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
+	//Generacion de token jwt
     private final Key key;
     private final long jwtExpirationMs;
 

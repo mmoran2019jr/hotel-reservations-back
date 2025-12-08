@@ -16,11 +16,15 @@ WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
 
+
+# --------- Variables de entorno para configuracion en docker ---------
+	#--- Conexion base Mongo, jwt y perfil ---
 ENV SPRING_PROFILES_ACTIVE=dev
 ENV MONGODB_URI=mongodb://mongo:27017/hotel_reservations_dev
 ENV JWT_SECRET=super-clave-jwt-larga-y-segura-para-docker-2025
 ENV JWT_EXPIRATION_MS=86400000
 
+#Puerto de backend en docker
 EXPOSE 8082  
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

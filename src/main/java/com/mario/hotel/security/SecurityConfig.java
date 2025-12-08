@@ -24,6 +24,7 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    //Configuracion de cors a rutas especificas del front
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
