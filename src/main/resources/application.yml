@@ -6,4 +6,4 @@ spring:
     active: dev  # Perfil por defecto
 
 server:
-  port: 8083
+  port: 8082

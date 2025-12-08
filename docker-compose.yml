@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: hotel-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: hotel_reservations_dev
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build:
+      context: "C:/Users/mmora/OneDrive/Documents/backend_javaspring/hotel-reservations-api"
+      dockerfile: Dockerfile
+    container_name: hotel-api
+    depends_on:
+      - mongo
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      MONGODB_URI: mongodb://mongo:27017/hotel_reservations_dev
+      JWT_SECRET: super-clave-jwt-larga-y-segura-para-docker-2025
+      JWT_EXPIRATION_MS: 86400000
+    ports:
+      - "8082:8082"   # host 8082 -> contenedor 8082
+
+  frontend:
+    build:
+      context: "C:/Users/mmora/OneDrive/Documents/HotelApplication/hotel-reservations-front/hotel-front"
+      dockerfile: Dockerfile
+    container_name: hotel-frontend
+    depends_on:
+      - api
+    ports:
+      - "4200:80"     # host 4200 -> contenedor 80 (nginx)
+
+volumes:
+  mongo_data:
