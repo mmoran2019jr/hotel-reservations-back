@@ -1,4 +1,4 @@
-🏨 Hotel Reservations API – Backend
+## 🏨 Hotel Reservations API – Backend
 Backend del sistema de reservas de hotel construido con Spring Boot 3, MongoDB y JWT. Provee endpoints para gestionar usuarios, habitaciones, reservas y procesos de checkout.
 
 🚀 Tecnologías
@@ -9,6 +9,7 @@ Spring Security (JWT)
 Spring Data MongoDB
 Maven
 Docker / Docker Compose
+MongoDb - Gestor de base de datos
 
 📌 Funcionalidades principales
 
@@ -52,41 +53,42 @@ Maven 3.9+
 
 MongoDB local (27017)
 
-##Iniciar la API
+## Iniciar la API
 mvn spring-boot:run
 
 La API estará disponible en:
 
 http://localhost:8082/api
 
-🐳 Ejecutar con Docker
-Construir imagen
-docker compose build
+## 🐳 Dockerfile — Backend (Spring Boot + Java 17)
 
-Levantar servicios
-docker compose up -d
+Este Dockerfile utiliza una construcción multi-etapa para generar una imagen optimizada del backend.
+Primero compila el proyecto con Maven y luego crea una imagen final ligera usando JRE Alpine.
+
+🔧 Etapa 1 — Build con Maven (build)
+FROM maven:3.9.9-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+Etapa 2 — Imagen ligera para producción
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
 
 
-Servicios expuestos:
+⚙️ Variables de entorno (configuración en Docker)
+ENV SPRING_PROFILES_ACTIVE=dev
+ENV MONGODB_URI=mongodb://mongo:27017/hotel_reservations_dev
+ENV JWT_SECRET=super-clave-jwt-larga-y-segura-para-docker-2025
+ENV JWT_EXPIRATION_MS=86400000
 
-API: http://localhost:8081/api
-
-MongoDB: mongodb://localhost:27017
-
-## endpoints principales
-
-POST /api/auth/register
-
-POST /api/auth/login
-
-GET /api/rooms
-
-GET /api/rooms/{id}
-
-POST /api/reservations
-
-PUT /api/reservations/{id}
-
-DELETE /api/reservations/{id}
-
-POST /api/checkout/{id}
+🌐 Exposición de puerto
+EXPOSE 8082
