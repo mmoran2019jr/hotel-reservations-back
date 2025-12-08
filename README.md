@@ -135,3 +135,6 @@ docker compose build - empaquetados y despliegue
 
 docker compose up -d - levantar servicios
 
+## Collection postman
+Se adjunta collection de postman HOTEL_DEV.postman_collection.json.
+
